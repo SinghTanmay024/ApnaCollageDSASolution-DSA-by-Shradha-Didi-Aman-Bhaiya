@@ -1,0 +1,18 @@
+    String printLargest(String[] arr) {
+        // code here
+        String ans = "";
+        Arrays.sort(arr, new Comparator<String>()
+        {
+            @Override public int compare(String X, String Y)
+            {
+                String XY = X + Y;
+                String YX = Y + X;
+                return XY.compareTo(YX) > 0 ? -1 : 1;
+            }
+        });
+        for(String i : arr){
+            ans +=i;
+        }
+        return ans;
+    }
+}

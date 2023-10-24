@@ -1,0 +1,35 @@
+class Solution {
+    public boolean isValid(String s) {
+
+        Stack<Character>st = new Stack<>();
+        for(char x : s.toCharArray()){
+            if(x == '(' || x == '{' ||x == '['){
+                st.push(x);
+                continue;
+            }
+            if(st.size() == 0){
+                return false;
+            }else{
+                char y = st.pop();
+                if(x == ')'){
+                    if(y == '{'||y == '['){
+                       return false;
+                    }
+                }else if(x == '}'){
+                    if(y == '('||y == '['){
+                       return false;
+                    }
+                }else if(x == ']'){
+                    if(y == '('||y == '{'){
+                       return false;
+                    }
+                }
+            }
+        }
+        if(st.size() == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
